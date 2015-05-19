@@ -24,6 +24,9 @@ public class TwoSum {
 
 	public int[] twoSum(int[] numbers, int target) {
 		int[] result = new int[2];
+		if(numbers == null || numbers.length == 0 ){
+            return result;
+        } //target == 0为一个合法的计算，不需要当做边界条件考虑
 		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
 		for(int i = 0; i < numbers.length; i++){
 			if(map.containsKey(target - numbers[i])){
