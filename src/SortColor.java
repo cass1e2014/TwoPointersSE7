@@ -31,7 +31,6 @@ public class SortColor {
 				break;
 			case 2:
 				swap(A, i, back);
-				i++;
 				back--;
 				break;
 			case 0:

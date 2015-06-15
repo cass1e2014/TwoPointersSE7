@@ -15,36 +15,26 @@ public class RemoveDuplicatesFromSortedArrayII {
 		System.out.print(result);
 	}
 	
-	public int removeDuplicates(int[] A) {
-        	if(A.length < 2){
-        		return A.length;
-        	}
-        	
-        	int size = 0;
-        	int pointer = size + 1;
-        	int count = 0;
-        	
-        	//多了一個count來記錄有沒有額外的重複元素。
-        	//遇到重複元素時，只有count為零的時候，size和pointer都要移動。
-        	while(size < A.length && pointer < A.length){
-        		if(A[size] == A[pointer]){
-        			if(count == 0){
-        				size ++;
-        				pointer ++;
-        				count ++;
-        				System.out.println("find duplicates, count == 0, the size is: " + size + " , the pointer: " + pointer + ", count: " + count );
-        			}else{
-        				pointer ++;
-        				System.out.println("find duplicates, but count != 0, the pointer is = " + pointer);
-        			}
-        		}else{
-        			count = 0;
-        			A[++ size] = A[pointer];
-        			pointer ++;
-        			System.out.println("not duplicates: after move, the pointer is = " + pointer);
-        		}
-        	}
-        	return size + 1;
+	public int removeDuplicates(int[] nums) {
+		if(nums == null || nums.length == 0){
+            return 0;
+        }
+        if(nums.length < 2){
+            return nums.length;
+        }
+        
+       int prev = 1;
+       int curr = 2;
+       while(curr < nums.length){
+           if(nums[curr] == nums[prev] && nums[curr] == nums[prev - 1]){
+               curr ++;
+           }else{
+               prev ++;
+               nums[prev] = nums[curr];
+               curr ++;
+           }
+       }
+       return prev + 1;
     }
 
 }

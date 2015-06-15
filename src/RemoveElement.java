@@ -10,7 +10,7 @@
  * two pointer
  */
 public class RemoveElement {
-	public int removeElement(int[] nums, int val){
+	public static int removeElement(int[] nums, int val){
 		if(nums == null || nums.length == 0){
 			return 0;
 		}
@@ -27,5 +27,11 @@ public class RemoveElement {
 			}
 		}
 		return pointer + 1;
+	}
+	
+	public static void main(String[] args){
+		int[] a = {3, 5, 6, 7, 5};
+		int val = 5;
+		System.out.println(removeElement(a, val));
 	}
 }
