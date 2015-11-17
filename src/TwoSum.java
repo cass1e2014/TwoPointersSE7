@@ -22,6 +22,7 @@ public class TwoSum {
 
 	}
 
+	//HashMap: Time ~ O(N), Space ~ O(N)
 	public int[] twoSum(int[] numbers, int target) {
 		int[] result = new int[2];
 		if(numbers == null || numbers.length == 0 ){
