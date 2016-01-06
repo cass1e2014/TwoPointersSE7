@@ -11,6 +11,7 @@
  */
 public class MinimumSizeSubarraySum {
 	// Time O(n), Space O(1)
+	// 也是由一个prev指针和for loop的i指针维护最小窗户
 	public int minSubArrayLen(int s, int[] nums) {
 		int prev = 0, sum = 0, len = Integer.MAX_VALUE;
 		for (int i = 0; i < nums.length; i++) {

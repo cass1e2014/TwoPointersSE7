@@ -24,11 +24,12 @@ public class RemoveDupicatesFromSortedArray {
 		int size = 0;
 		int pointer = size + 1;
 		
-		while(size < A.length && pointer < A.length){
+		while(pointer < A.length){
 			if(A[size] == A[pointer]){
 				pointer++;
 			}else{
-				A[++size] = A[pointer];//当遇到不同元素时，先把size指针移动到pointer指针所在的位置，再把pointer指针往后移。
+				size++;
+				A[size] = A[pointer];//当遇到不同元素时，先把size指针移动到pointer指针所在的位置，再把pointer指针往后移。
 				pointer++;
 			}
 		}

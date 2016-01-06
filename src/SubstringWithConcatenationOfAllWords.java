@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 
@@ -19,13 +20,18 @@ import java.util.List;
  * 
  */
 public class SubstringWithConcatenationOfAllWords {
-	public List<Integer> findSubstring(String s, String[] words) {
+	public static void main(String[] args){
+		String s = "barfoothefoobarman";
+		String[] words = {"foo", "bar"};
+		System.out.println(Arrays.toString(findSubstring(s, words).toArray()));
+	}
+	public static List<Integer> findSubstring(String s, String[] words) {
 		List<Integer> result = new ArrayList<Integer>();
 		HashMap<String, Integer> toFind = new HashMap<String, Integer>();
 		HashMap<String, Integer> found = new HashMap<String, Integer>();
 		// m记录words[]的长度，n记录words[]中每个string的长度
-		int m = words.length;
-		int n = words[0].length();
+		int m = words.length;//2
+		int n = words[0].length();//3
 		// 过一遍words[]放到toFind的hashmap中，string在words[]中有可能出现多次，要统计次数
 		for (int i = 0; i < m; i++) {
 			if (!toFind.containsKey(words[i])) {
@@ -36,11 +42,13 @@ public class SubstringWithConcatenationOfAllWords {
 		}
 
 		// 和Strstr()很像
+		//在大string s上移动看能否找到连续的foobar，m*n+1=7， 因为s只需移动到foobar得开头第一个字母
 		for (int i = 0; i < s.length() - m * n + 1; i++) {
 			found.clear();
 			int j;
+			//j移动2次（words[] 单词的个数
 			for (j = 0; j < m; j++) {
-				int k = i + j * n;
+				int k = i + j * n; //j*n， 在i起始点的基础上每次3个3个移动，决定于words[]中每个单词的长度
 				String stub = s.substring(k, k + n);
 				if (!toFind.containsKey(stub)) {
 					break;
@@ -54,6 +62,7 @@ public class SubstringWithConcatenationOfAllWords {
 					break;
 				}
 			}
+			//当找到words[]中所有的单词，返回开始的index
 			if (j == m) {
 				result.add(i);
 			}
@@ -77,7 +86,7 @@ public class SubstringWithConcatenationOfAllWords {
 	 * @return
 	 */
 	
-	public List<Integer> findSubstringII (String S, String[] L){
+	public static List<Integer> findSubstringII (String S, String[] L){
 		List<Integer> result = new ArrayList<Integer>();
 		if(S == null || S.length() == 0 || L == null || L.length == 0){
 			return result;

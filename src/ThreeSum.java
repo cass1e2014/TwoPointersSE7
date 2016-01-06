@@ -23,6 +23,7 @@ public class ThreeSum {
 
 	}
 
+	//time O(nlogn)
 	public List<List<Integer>> threeSum(int[] num) {
 		if (num == null) {
 			return null;
